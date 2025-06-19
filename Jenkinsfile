@@ -4,7 +4,7 @@ pipeline {
     }
     
     stages {
-        stage('Verifier et installer Apache2') {
+        stage('Verifier et installer apache2') {
             steps {
                 sh '''
                     if [ ! -f /usr/sbin/apache2 ]; then
