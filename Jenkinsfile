@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'agent-vm'
+    }
     
     stages {
         stage('Verifier et installer Apache2') {
