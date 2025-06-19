@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage('Vérifier et installer Apache2') {
+        stage('Verifier et installer Apache2') {
             steps {
                 sh '''
                     if [ ! -f /usr/sbin/apache2 ]; then
