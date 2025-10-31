@@ -12,7 +12,7 @@ pipeline {
                         sudo apt-get update
                         sudo apt-get install -y apache2
                     else
-                        echo "Apache2 déjà installé"
+                        echo "Apache2 est déjà installé"
                     fi
                 '''
             }
