@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'agent-vm'
+        label 'lxc'
     }
     
     stages {
@@ -9,12 +9,18 @@ pipeline {
                 sh '''
                     if [ ! -f /usr/sbin/apache2 ]; then
                         echo "Apache2 non installé - Installation..."
-                        sudo apt update
-                        sudo apt install -y apache2
+                        sudo apt-get update
+                        sudo apt-get install -y apache2
                     else
                         echo "Apache2 déjà installé"
                     fi
                 '''
+            }
+        }
+
+        stage('checkout') {
+            steps {
+                checkout scm
             }
         }
         
@@ -27,6 +33,12 @@ pipeline {
         stage('Redémarrer Apache2') {
             steps {
                 sh 'sudo systemctl restart apache2'
+            }
+        }
+
+        stage('Test du serveur') {
+            steps {
+                sh 'curl http://localhost'
             }
         }
     }
